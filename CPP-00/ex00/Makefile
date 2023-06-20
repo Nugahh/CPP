@@ -6,17 +6,17 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 20:39:07 by fwong             #+#    #+#              #
-#    Updated: 2023/06/13 20:43:33 by fwong            ###   ########.fr        #
+#    Updated: 2023/06/19 17:50:18 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	megaphone
+NAME	=	phonebook
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
-SRCS	= 	megaphone.cpp	
+SRCS	= 	phonebook.cpp contact.cpp	
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 

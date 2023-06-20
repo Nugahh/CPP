@@ -6,7 +6,7 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 20:39:07 by fwong             #+#    #+#              #
-#    Updated: 2023/06/13 20:46:30 by fwong            ###   ########.fr        #
+#    Updated: 2023/06/20 21:07:47 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
-SRCS	= 	megaphone.cpp
+SRCS	= 	phonebook.cpp contact.cpp main.cpp
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 
@@ -26,7 +26,7 @@ all: ${NAME}
 
 -include $(DEP)
 
-./objs/%.o: %.cpp
+./objs/%.o: src/%.cpp
 	@@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
