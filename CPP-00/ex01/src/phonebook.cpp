@@ -6,28 +6,28 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:55:51 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/20 23:27:20 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:54:03 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Phonebook.hpp"
 
-Phonebook::Phonebook() { index = 0; }
+Phonebook::Phonebook() { _index = 0; }
 
 Phonebook::~Phonebook() {}
 
 
 void Phonebook::add() {
-	if (index < 8)
+	if (_index < 8)
 	{
-		book[index].setContact();
-		index++;
+		book[_index].setContact();
+		_index++;
 	}
 	else
 	{
-		index = 0;
-		book[index].setContact();
-		index++;
+		_index = 0;
+		book[_index].setContact();
+		_index++;
 	}
 }
 

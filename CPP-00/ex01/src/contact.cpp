@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:55:49 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/20 22:19:11 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:58:56 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void Contact::setContact()
 	std::string getters[5] =
 		{ firstName, lastName, nickName, phoneNumber, darkestSecret };
 		
-//	std::cin.ignore();
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << setPhrase[i] << std::endl;

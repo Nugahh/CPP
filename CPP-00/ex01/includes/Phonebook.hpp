@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:46:35 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/20 23:03:25 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/21 16:53:40 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Phonebook {
 		void exit();
 		
 	private:
-		int index;
+		int _index;
 		Contact book[8];
 };
 
