@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:55:49 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/21 16:58:56 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/26 17:42:08 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void Contact::setContact()
 	std::string input;
 	std::string setPhrase[5] =
 		{ "Enter First Name: ", "Enter Last Name: ", "Enter Nickname: ", "Enter Phone number: ", "Enter Darkest Secret: " };
-	std::string getters[5] =
-		{ firstName, lastName, nickName, phoneNumber, darkestSecret };
 		
 	for (int i = 0; i < 5; i++)
 	{

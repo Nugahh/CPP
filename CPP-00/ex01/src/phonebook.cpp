@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:55:51 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/21 16:54:03 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/26 17:48:37 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void Phonebook::add() {
 	if (_index < 8)
 	{
 		book[_index].setContact();
+		std::cout << " CACACA" << book[_index].getFirstName() << std::endl;
 		_index++;
 	}
 	else
@@ -43,7 +44,7 @@ void Phonebook::search() {
 	
 	for (int i = 0; i < 8; i++)
 	{
-		std::cout << std::setw(10) << i + 1 << "|";
+		std::cout << std::setw(10) << i << "|";
 		if (book[i].getFirstName().length() > 10)
 			std::cout << std::setw(9) << book[i].getFirstName().substr(0, 9) << "." << "|";
 		else
@@ -65,7 +66,7 @@ void Phonebook::search() {
             std::cin.clear();
             return ;
         }
-	while (number < 1 || number > 8)
+	while (number < 0 || number > 7)
 	{
 		std::cout << RED << "Wrong Index !" << RESET << std::endl;
 		std::cout << RED << "Enter only number from 1 to 8: " << RESET << std::endl;
@@ -73,10 +74,13 @@ void Phonebook::search() {
 		std::istringstream iss(input);
 		iss >> number;
 	}
-	std::cout << "First Name: " << book[atoi(input.c_str())].getFirstName() << std::endl;
-	std::cout << "Last Name: " << book[atoi(input.c_str())].getLastName() << std::endl;
-	std::cout << "Nickname: " << book[atoi(input.c_str())].getNickName() << std::endl;
-	std::cout << "Phone Number: " << book[atoi(input.c_str())].getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret: " << book[atoi(input.c_str())].getDarkestSecret() << std::endl;
+	int32_t id = std::atoi(input.c_str());
+	
+	std::cout << "id :" << id << std::endl;
+	std::cout << "First Name: " << book[id].getFirstName() << std::endl;
+	std::cout << "Last Name: " << book[id].getLastName() << std::endl;
+	std::cout << "Nickname: " << book[id].getNickName() << std::endl;
+	std::cout << "Phone Number: " << book[id].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << book[id].getDarkestSecret() << std::endl;
 }
 
