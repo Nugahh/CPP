@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 20:55:51 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/26 17:48:37 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/26 19:15:40 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void Phonebook::add() {
 	if (_index < 8)
 	{
 		book[_index].setContact();
-		std::cout << " CACACA" << book[_index].getFirstName() << std::endl;
 		_index++;
 	}
 	else
