@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 21:10:29 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/27 17:33:41 by fwong            ###   ########.fr       */
+/*   Created: 2023/06/27 18:31:41 by fwong             #+#    #+#             */
+/*   Updated: 2023/06/28 02:25:42 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
 
-int main() {
-	
-	Zombie* horde = zombieHorde(5, "HeapZombie");
+#include "Colors.hpp"
+// #include "HumanA.hpp"
+// #include "HumanB.hpp"e
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <cctype>
 
-	delete[] horde;
-    return 0;
-}
+
+class Weapon {
+
+	public:
+		Weapon();
+		Weapon(std::string type);
+		~Weapon();
+
+		std::string &getType();
+		void setType(std::string type);
+		
+	private:
+		std::string _type;
+};
+
+#endif

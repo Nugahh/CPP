@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   humanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 21:10:29 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/27 17:33:41 by fwong            ###   ########.fr       */
+/*   Created: 2023/06/27 19:08:46 by fwong             #+#    #+#             */
+/*   Updated: 2023/06/28 02:32:47 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#include "../includes/Weapon.hpp"
+#include "../includes/HumanA.hpp"
 
-int main() {
-	
-	Zombie* horde = zombieHorde(5, "HeapZombie");
+HumanA::HumanA(std::string name, Weapon &weapon)
+	: _weapon(weapon)
+	, _name(name) {}
 
-	delete[] horde;
-    return 0;
+HumanA::~HumanA() {}
+
+void    HumanA::attack() {
+	std::cout	<< _name << " attacks with their "
+				<< _weapon.getType()
+				<< std::endl;
 }

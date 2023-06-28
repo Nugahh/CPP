@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 21:10:38 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/26 21:36:26 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/27 17:40:53 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Zombie {
 		Zombie();
 		Zombie(std::string name);
 		~Zombie();
+		
+		void setName(std::string name);
 		
 		void announce(void);
 	

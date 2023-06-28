@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 21:10:29 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/27 17:33:41 by fwong            ###   ########.fr       */
+/*   Created: 2023/06/27 19:08:58 by fwong             #+#    #+#             */
+/*   Updated: 2023/06/28 00:03:52 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
 
-int main() {
+#include "Weapon.hpp"
+#include <iostream>
+
+class HumanB {
 	
-	Zombie* horde = zombieHorde(5, "HeapZombie");
+	public:
+		HumanB(std::string name);
+		HumanB(std::string name, Weapon* weapon);
+		~HumanB();
 
-	delete[] horde;
-    return 0;
-}
+		void setWeapon(Weapon& weapon);
+		void attack();
+			
+	private:
+		Weapon 		_weapon;
+		std::string _name;
+};
+
+#endif

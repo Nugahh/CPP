@@ -5,17 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 21:10:29 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/27 17:33:41 by fwong            ###   ########.fr       */
+/*   Created: 2023/06/27 19:08:47 by fwong             #+#    #+#             */
+/*   Updated: 2023/06/28 02:29:52 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Zombie.hpp"
+#include "../includes/Weapon.hpp"
+#include "../includes/HumanA.hpp"
+#include "../includes/HumanB.hpp"
 
-int main() {
-	
-	Zombie* horde = zombieHorde(5, "HeapZombie");
-
-	delete[] horde;
-    return 0;
+int main()
+{
+	{
+		Weapon club = Weapon("crude spiked club");		
+		HumanA bob("Bob", club);
+		bob.attack();
+		club.setType("fils de pute");
+		bob.attack();
+	}
+	// {
+	// 	Weapon club = Weapon("crude spiked club");
+	// 	HumanB jim("Jim");
+	// 	jim.setWeapon(club);
+	// 	jim.attack();
+	// 	club.setType("some other type of club");
+	// 	jim.attack();
+	// }
+	return 0;
 }
