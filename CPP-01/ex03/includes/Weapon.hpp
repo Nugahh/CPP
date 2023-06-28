@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 18:31:41 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/28 02:25:42 by fwong            ###   ########.fr       */
+/*   Updated: 2023/06/28 17:40:12 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Weapon {
 		Weapon(std::string type);
 		~Weapon();
 
-		std::string &getType();
+		std::string &getType(); // faut rajouter const je crois
 		void setType(std::string type);
 		
 	private:
