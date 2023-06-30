@@ -6,17 +6,17 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/06/30 15:04:31 by fwong            ###   ########.fr        #
+#    Updated: 2023/06/30 17:39:09 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	brain
+NAME	=	harl
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
-SRCS	= 	humanA.cpp humanB.cpp weapon.cpp main.cpp
+SRCS	= 	harl.cpp main.cpp
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 
