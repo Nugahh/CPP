@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 18:33:39 by fwong             #+#    #+#             */
-/*   Updated: 2023/06/30 19:37:02 by fwong            ###   ########.fr       */
+/*   Updated: 2023/07/03 20:00:08 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Fixed::Fixed(const Fixed &copy) {
 
 Fixed::Fixed(int const value) {
 	std::cout << "Int constructor called" << std::endl;
-	this-> _fixedPointValue = value << _fractionalBits;
+	this->_fixedPointValue = value << _fractionalBits;
 }
 
 Fixed::Fixed(float const fl) {
@@ -56,9 +56,4 @@ int Fixed::toInt() const {
 
 float Fixed::toFloat() const {
 	return ((float)this->_fixedPointValue / (float)(1 << _fractionalBits));
-}
-
-std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
-	out << fixed.toFloat();
-	return out;
 }
