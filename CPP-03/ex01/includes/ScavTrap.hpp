@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 18:33:33 by fwong             #+#    #+#             */
-/*   Updated: 2023/07/07 23:07:53 by fwong            ###   ########.fr       */
+/*   Created: 2023/06/30 18:32:51 by fwong             #+#    #+#             */
+/*   Updated: 2023/07/12 15:01:35 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScavTrap.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int main(void)
-{
-    ScavTrap John("John");
-    ScavTrap Tom("Tom");
-	
-    John.attack("Tom");
-    Tom.takeDamage(John.getAttackDamage());
+#include "ClapTrap.hpp"
+#include "Colors.hpp"
 
-    John.beRepaired(2);    
-    
-    Tom.attack("John");
-    John.takeDamage(Tom.getAttackDamage());
+class ScavTrap : public ClapTrap {
 
-    John.beRepaired(5);
- 
-    Tom.guardGate();
-    Tom.guardGate();
-    return 0;
-}
+	public:
+		ScavTrap();
+		ScavTrap(std::string _name);
+		ScavTrap(const ScavTrap &copy);
+		~ScavTrap();
+
+		ScavTrap &operator=(const ScavTrap &copy);
+
+		void 			guardGate();
+		void 			attack(const std::string &targent);
+		
+	private:
+		bool _gateKeeper;
+};
+
+#endif

@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 18:32:51 by fwong             #+#    #+#             */
-/*   Updated: 2023/07/05 15:58:49 by fwong            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:09:24 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-#define CLAPTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include "Colors.hpp"
+#include "ClapTrap.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
 
-class ClapTrap {
-	
+class FragTrap : public ClapTrap {
+
 	public:
-		ClapTrap();
-		ClapTrap(std::string _name);
-		ClapTrap(const ClapTrap &copy);
-		~ClapTrap();
+		FragTrap();
+		FragTrap(std::string _name);
+		FragTrap(const FragTrap &copy);
+		virtual ~FragTrap();
 
-		ClapTrap &operator=(const ClapTrap &copy);
+		FragTrap &operator=(const FragTrap &copy);
 
-		void		 setAttackDamage(unsigned int attackDamage);
-		unsigned int getAttackDamage() const;
-		
-		void attack(const std::string &target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
-
-	private:
-		std::string			_name;
-		unsigned int 		_hitPoints;
-		unsigned int 		_energy;
-		unsigned int		_attackDamage;
-		
+		virtual void	attack(const std::string &target);
+		void			highFivesGuys();	
 };
 
 #endif

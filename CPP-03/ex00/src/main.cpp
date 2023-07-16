@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 18:33:33 by fwong             #+#    #+#             */
-/*   Updated: 2023/07/05 02:31:12 by fwong            ###   ########.fr       */
+/*   Updated: 2023/07/05 15:59:40 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int main() {
 
 	ClapTrap nour("Nour");
 	ClapTrap kelly("Kelly");
+	nour.setAttackDamage(2);
+	kelly.setAttackDamage(10);
 	
 	std::cout << std::endl;
 	

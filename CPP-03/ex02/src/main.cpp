@@ -6,16 +6,16 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 18:33:33 by fwong             #+#    #+#             */
-/*   Updated: 2023/07/07 23:07:53 by fwong            ###   ########.fr       */
+/*   Updated: 2023/07/12 15:05:57 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScavTrap.hpp"
+#include "../includes/FragTrap.hpp"
 
 int main(void)
 {
-    ScavTrap John("John");
-    ScavTrap Tom("Tom");
+    FragTrap John("John");
+    FragTrap Tom("Tom");
 	
     John.attack("Tom");
     Tom.takeDamage(John.getAttackDamage());
@@ -26,8 +26,8 @@ int main(void)
     John.takeDamage(Tom.getAttackDamage());
 
     John.beRepaired(5);
- 
-    Tom.guardGate();
-    Tom.guardGate();
+	
+	John.highFivesGuys();
+	Tom.highFivesGuys();
     return 0;
 }

@@ -6,17 +6,17 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/07/12 15:01:18 by fwong            ###   ########.fr        #
+#    Updated: 2023/07/12 20:12:27 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	canon
+NAME	=	metaria
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
-SRCS	= 	scavTrap.cpp clapTrap.cpp main.cpp
+SRCS	= 	main.cpp
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 
