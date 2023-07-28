@@ -19,7 +19,12 @@ MateriaSource::MateriaSource(MateriaSource const &copy) { *this = copy; }
 MateriaSource::~MateriaSource() {}
 
 MateriaSource &MateriaSource::operator=(MateriaSource const &rhs) {
-	this->_materia = rhs._materia;
+	for (int i = 0; i < 4; i++) {
+		if (this->_materia[i] != NULL) {
+			delete this->_materia[i];
+		}
+		this->_materia[i] = rhs._materia[i]->clone();
+	}
 	return (*this);
 }
 

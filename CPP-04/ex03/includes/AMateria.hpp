@@ -15,7 +15,9 @@
 
 #include <iostream>
 #include <string>
+
 #include "ICharacter.hpp"
+class ICharacter;
 
 class AMateria
 {
@@ -34,6 +36,6 @@ class AMateria
 
 	protected:
 		std::string _type;
-}
+};
 
 #endif

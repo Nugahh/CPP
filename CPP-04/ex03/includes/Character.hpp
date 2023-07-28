@@ -22,10 +22,10 @@ class Character : public ICharacter {
 	public:
 		Character();
 		Character(std::string const & name);
-		Character(const ICharacter &copy);
-		~ICharacter();
+		Character(Character const &copy);
+		~Character();
 
-		Character &operator=(const ICharacter &copy);
+		Character &operator=(Character const &copy);
 		std::string const &getName() const;
 
 		void equip(AMateria *m);
@@ -34,9 +34,10 @@ class Character : public ICharacter {
 
 		private:
 			std::string _name;
-			std::string _inventory[4];
+			AMateria	*_inventory[4];
 			AMateria 	**_trash;
-			// int			 _trashSize;
+			int			_trashSize;
+			int			_inventorySize;
 };
 
 #endif

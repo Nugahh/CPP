@@ -27,12 +27,8 @@ AMateria &AMateria::operator=(AMateria const &rhs) {
 	return (*this);
 }
 
-std::string	&AMateria::getType() const {
+std::string	const&AMateria::getType() const {
 	return this->_type;
-}
-
-AMateria *AMateria::clone() const {
-	return (new AMateria(*this));
 }
 
 void AMateria::use(ICharacter &target) {
