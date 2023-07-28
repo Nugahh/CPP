@@ -15,7 +15,12 @@
 
 #include <iostream>
 #include <string>
+
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
+
+class ICharacter;
+class AMateria;
 
 class Character : public ICharacter {
 
