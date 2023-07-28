@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   metaria.cpp                                        :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/12 20:28:30 by fwong             #+#    #+#             */
-/*   Updated: 2023/07/12 20:28:30 by fwong            ###   ########.fr       */
+/*   Created: 2023/07/24 13:23:19 by fwong             #+#    #+#             */
+/*   Updated: 2023/07/24 13:23:19 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/metaria.hpp"
+#include "../includes/AMateria.hpp"
 
-AMetaria::AMetaria() {}
+AMateria::AMateria() {}
 
-AMetaria::AMetaria(std::string const &type) : _type(type) {}
+AMateria::AMateria(std::string const &type) : _type(type) {}
 
-AMetaria::AMetaria(AMetaria const &copy) {
+AMateria::AMateria(AMateria const &copy) {
 	*this = copy;
 }
 
-AMetaria::~AMetaria() {}
+AMateria::~AMateria() {}
 
-AMetaria &AMetaria::operator=(AMetaria const &rhs) {
+AMateria &AMateria::operator=(AMateria const &rhs) {
 	this->_type = rhs._type;
 	return (*this);
 }
 
-std::string	&AMetaria::getType() const {
+std::string	&AMateria::getType() const {
 	return this->_type;
 }
 
-AMetaria *AMetaria::clone() const {
-	return (new AMetaria(*this));
+AMateria *AMateria::clone() const {
+	return (new AMateria(*this));
 }
 
-void AMetaria::use(ICharacter &target) {
+void AMateria::use(ICharacter &target) {
 	(void)target;
 }

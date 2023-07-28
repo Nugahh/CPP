@@ -36,5 +36,7 @@ class Character : public ICharacter {
 			std::string _name;
 			std::string _inventory[4];
 			AMateria 	**_trash;
-			int			 _trashIndex;
+			// int			 _trashSize;
 };
+
+#endif

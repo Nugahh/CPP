@@ -14,8 +14,7 @@
 
 Character::Character()
 	: _name("character")
-	, _trash(NULL)
-	, _trashIndex(0) {
+	, _trash(NULL) {
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
@@ -23,8 +22,7 @@ Character::Character()
 
 Character::Character(std::string const &name)
 	: _name(name)
-	, _trash(NULL)
-	, _trashIndex(0) {
+	, _trash(NULL) {
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
 	}
@@ -35,16 +33,13 @@ Character::Character(Character const &copy) {
 }
 
 Character::~Character() {
-	for (int i = 0; i < 4; i++) {
-		if (this->_inventory[i] != NULL) {
+	for (int i = 0; i < 4; i++)
+		if (this->_inventory[i] != NULL) 
 			delete this->_inventory[i];
-		}
-	}
-	if (this->_trash) {
-		for (int i = 0; this->thras[i], i++)
+	if (this->_trash)
+		for (int i = 0; this->_thrash[i], i++)
 			delete this->_trash[i];
-		delete this->_trash;
-	}
+	delete this->_trash;
 }
 
 Character &Character::operator=(Character const &rhs) {
@@ -75,10 +70,17 @@ void Character::equip(AMateria *m) {
 void Character::unequip(int idx) {
 	if (idx < 0 || idx >= this->_trashIndex)
 		return ;
-	this->addToTrash(this->_inventory[idx]);
+	if (this->_inventory[idx] == NULL)
+		return ;
+	this->_trash[this->_trashSize] = this->_inventory[idx];
+	this->_trashSize++;
 	this->_inventory[idx] = NULL;
-	for (int i = idx; i < (this->_trashIndex - 1); i++) {
-		this->_inventory[i] = this->_inventory[i + 1];
-	}
-	this->_trashIndex--;
+}
+
+void	Character::use(int idx, ICharacter &target) {
+	if (idx < 0 || idx > 3)
+		return ;
+	if (this->_inventory[idx] == NULL)
+		return ;
+	this->_inventory[idx]->use(target);
 }

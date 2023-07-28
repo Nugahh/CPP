@@ -6,17 +6,17 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/07/12 20:12:27 by fwong            ###   ########.fr        #
+#    Updated: 2023/07/24 13:26:29 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	metaria
+NAME	=	Materia
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
-SRCS	= 	main.cpp
+SRCS	= 	main.cpp AMateria.cpp character.cpp cure.cpp ice.cpp materiaSource.cpp
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 
