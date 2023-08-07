@@ -6,7 +6,7 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/07/28 04:41:37 by fwong            ###   ########.fr        #
+#    Updated: 2023/07/28 17:09:07 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	Materia
 
 CC		=	c++
 
-CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98 -g3
 
 SRCS	= 	main.cpp AMateria.cpp character.cpp cure.cpp ice.cpp materiaSource.cpp
  

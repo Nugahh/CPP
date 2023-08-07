@@ -17,7 +17,7 @@
 #include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource {
-	
+
 	public:
 		MateriaSource();
 		MateriaSource(const MateriaSource &copy);
@@ -25,11 +25,12 @@ class MateriaSource : public IMateriaSource {
 
 		MateriaSource &operator=(const MateriaSource &copy);
 
-		void 		learnMateria(AMateria*);
-		AMateria* 	createMateria(std::string const & type);
+		virtual void 		learnMateria(AMateria*);
+		virtual AMateria* 	createMateria(std::string const & type);
 
 	private:
 		AMateria *_materia[4];
+		int	 _materiaSize;
 };
 
 #endif

@@ -21,7 +21,8 @@ class Cure : public AMateria {
 		Cure();
 		~Cure();
 
-		AMateria	*clone() const;
+		virtual void 		use(ICharacter& target);
+		AMateria			*clone() const;
 };
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/brain.hpp"
+#include "Brain.hpp"
 
 Brain::Brain() {
 	std::cout << "Brain default constructor called" << std::endl;
@@ -25,6 +25,11 @@ Brain::~Brain() {
 	std::cout << "Brain destructor called" << std::endl;
 }
 
+std::string Brain::setIdea(std::string idea, int i) {
+	this->_ideas[i] = idea;
+	return (this->_ideas[i]);
+}
 
-
-
+std::string Brain::getIdea(int i) const {
+	return (this->_ideas[i]);
+}

@@ -25,6 +25,8 @@ class Cat : public AAnimal {
 
 		Cat &operator=(const Cat &copy);
 
+		std::string setIdea(std::string idea, int index);
+		std::string getIdea(int index) const;
 		void	makeSound() const;
 	
 	private:

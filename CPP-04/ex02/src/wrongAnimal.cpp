@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/wrongAnimal.hpp"
+#include "../includes/WrongAnimal.hpp"
 
 WrongAnimal::WrongAnimal()
 	: _type("WrongAnimal") {

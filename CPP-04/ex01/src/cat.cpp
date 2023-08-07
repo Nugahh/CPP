@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cat.hpp"
+#include "Cat.hpp"
 
 Cat::Cat()
 	: Animal() {
@@ -32,11 +32,21 @@ Cat::~Cat() {
 
 Cat &Cat::operator=(Cat const &rhs) {
 	this->_type = rhs._type;
+	this->_brain = new Brain;
+	*this->_brain = *rhs._brain;
 	return (*this);
 }
+
 
 void Cat::makeSound() const {
 	std::cout << "Meow Meow" << std::endl;
 }
 
+std::string Cat::getIdea(int i) const {
+	return this->_brain->getIdea(i);
+}
+
+std::string Cat::setIdea(std::string idea, int i) {
+	return this->_brain->setIdea(idea, i);
+}
 
