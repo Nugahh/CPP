@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/animal.hpp"
+#include "Animal.hpp"
 
 Animal::Animal() : _type("Animal") {
 	std::cout << "Animal Default Constructor called" << std::endl;
