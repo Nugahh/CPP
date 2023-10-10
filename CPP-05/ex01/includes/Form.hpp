@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:46:08 by fwong             #+#    #+#             */
-/*   Updated: 2023/09/25 19:14:22 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 23:07:56 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,11 @@ class Form {
 		void			beSigned(Bureaucrat &br);
 
 		class GradeTooHighException : public std::exception {
-			public:	
-				virtual void error() const throw() {
-					std::cout << "Grade is too high" << std::endl;
-				}
+			const char *what() const throw();
 		};
 		
 		class GradeTooLowException : public std::exception {
-			public:
-				virtual void error() const throw() {
-					std::cout << "Grade is too low" << std::endl;
-				}
+			const char *what() const throw();
 		};
 
 	private:

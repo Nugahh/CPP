@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:46:08 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/06 17:48:29 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 20:29:40 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define AFORM_HPP
 
 #include "Bureaucrat.hpp"
+
+
+class Bureaucrat;
 
 class AForm {
 	
@@ -34,27 +37,18 @@ class AForm {
 		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 		class GradeTooHighException : public std::exception {
-			public:	
-				virtual void error() const throw() {
-					std::cout << "Grade is too high" << std::endl;
-				}
+			const char *what() const throw();
 		};
 		
 		class GradeTooLowException : public std::exception {
-			public:
-				virtual void error() const throw() {
-					std::cout << "Grade is too low" << std::endl;
-				}
+			const char *what() const throw();
 		};
 
 		class NotSignedException : public std::exception {
-			public:
-				virtual void error() const throw() {
-					std::cout << "Form is not signed" << std::endl;
-				}
+			const char *what() const throw();
 		};
 
-	private:
+	protected:
 		const std::string	_name;
 		const int			_gradeToExecute; // 1 is highest, 150 is lowest
 		const int			_gradeToSign;

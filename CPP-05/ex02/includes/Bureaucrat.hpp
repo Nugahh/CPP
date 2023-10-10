@@ -5,10 +5,9 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/22 23:00:44 by fwong             #+#    #+#             */
-/*   Updated: 2023/09/23 02:11:04 by fwong            ###   ########.fr       */
-/*   CPPKENNY/CPP05/ex00/inc/colors.hpp
-                                                                        */
+/*   Created: 2023/10/09 17:37:14 by fwong             #+#    #+#             */
+/*   Updated: 2023/10/09 20:10:42 by fwong            ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
@@ -17,8 +16,13 @@
 #include <iostream>
 #include <exception>
 #include <string>
+#include <ctime>
+#include <fstream>
+#include <stdlib.h>
+#include "AForm.hpp"
 #include "colors.hpp"
 
+class AForm;
 class Bureaucrat {
 	
 	public:
@@ -34,18 +38,18 @@ class Bureaucrat {
 		void			incrementGrade();
 		void			decrementGrade();
 
+		bool		executeForm(AForm const & form) const;
+
 		class GradeTooHighException : public std::exception {
-			public:	
-				virtual void error() const throw() {
-					std::cout << "Grade is too high" << std::endl;
-				}
+			const char *what() const throw();
 		};
 
 		class GradeTooLowException : public std::exception {
-			public:
-				virtual void error() const throw() {
-					std::cout << "Grade is too low" << std::endl;
-				}
+			const char *what() const throw();
+		};
+
+		class NotSignedException : public std::exception {
+			const char *what() const throw();
 		};
 
 	private:

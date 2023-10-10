@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:33:18 by fwong             #+#    #+#             */
-/*   Updated: 2023/09/25 18:57:45 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 23:09:12 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,12 @@ void Form::beSigned(Bureaucrat &br) {
 		throw Form::GradeTooLowException();
 	else
 		this->_signed = true;
+}
+
+const char *Form::GradeTooHighException::what() const throw() {
+	return ("Grade is too high");
+}
+
+const char *Form::GradeTooLowException::what() const throw() {
+	return ("Grade is too low");
 }

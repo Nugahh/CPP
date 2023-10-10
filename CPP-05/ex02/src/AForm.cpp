@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:47:12 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/06 17:43:02 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 20:32:00 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AForm::AForm(const AForm& copy) : _name(copy._name), _gradeToExecute(copy._grade
 	std::cout << "AForm Copy Constructor called" << std::endl;
 }
 
-AForm::AForm(std::string name, int gradeToExecu                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            te, int gradeToSign) : _name(name), _gradeToExecute(gradeToExecute), _gradeToSign(gradeToSign), _signed(false) {
+AForm::AForm(std::string name, int gradeToExecute, int gradeToSign) : _name(name), _gradeToExecute(gradeToExecute), _gradeToSign(gradeToSign), _signed(false) {
 	std::cout << "AForm Constructor called" << std::endl;
 	if (this->_gradeToExecute < 1 || this->_gradeToSign < 1)
 		throw AForm::GradeTooHighException();
@@ -45,7 +45,7 @@ std::ostream &operator<<(std::ostream& out, AForm& form) {
 
 std::string AForm::getName() const { return (this->_name); }
 
-int AForm::() const { return (this->_gradeToExecute); }
+int AForm::getGradeToExecute() const { return (this->_gradeToExecute); }
 
 int	AForm::getGradeToSign() const { return (this->_gradeToSign); }
 
@@ -53,7 +53,19 @@ bool AForm::isSigned() const { return (this->_signed); }
 
 void AForm::beSigned(Bureaucrat &br) {
 	if (br.getGrade() > this->_gradeToSign)
-		AForm::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	else
 		this->_signed = true;
+}
+
+const char *AForm::GradeTooHighException::what() const throw() {
+	return ("Grade is too high");
+}
+
+const char *AForm::GradeTooLowException::what() const throw() {
+	return ("Grade is too low");
+}
+
+const char *AForm::NotSignedException::what() const throw() {
+	return ("Form is not signed");
 }

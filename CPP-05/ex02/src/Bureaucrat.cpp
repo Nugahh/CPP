@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:54:15 by fwong             #+#    #+#             */
-/*   Updated: 2023/09/25 13:34:07 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 23:03:18 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy) {
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat& bureaucrat) {
+std::ostream &operator<<(std::ostream &out, Bureaucrat& bureaucrat) {
 	out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
 	return (out);
 }
@@ -59,4 +59,29 @@ void Bureaucrat::decrementGrade() {
 		throw Bureaucrat::GradeTooLowException();
 	else
 		this->_grade++;
+}
+
+bool	Bureaucrat::executeForm(AForm const & form) const {
+	if (form.isSigned() == false) {
+		throw Bureaucrat::NotSignedException();
+	} else if (getGrade() > form.getGradeToExecute()) {
+		throw Bureaucrat::GradeTooLowException();
+	} else {
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+		return true;
+	}
+	return false;
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("Grade is too high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Grade is too low");
+}
+
+const char *Bureaucrat::NotSignedException::what() const throw() {
+	return ("Form is not signed");
 }

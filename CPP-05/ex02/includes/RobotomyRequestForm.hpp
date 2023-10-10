@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 16:16:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/06 17:28:54 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 15:09:19 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &copy);
 
 		void execute(Bureaucrat const & executor) const;
+
+		private:
+			std::string _target;
 };
 
 #endif

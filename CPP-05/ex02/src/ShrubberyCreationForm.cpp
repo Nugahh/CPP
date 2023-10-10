@@ -6,21 +6,21 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:25:44 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/06 17:50:49 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 18:17:49 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("Default") {
 	std::cout << "Default constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
 	std::cout << "Parametric constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), _target(copy._target) {
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -30,17 +30,19 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &copy) {
 	std::cout << "Assignation operator called" << std::endl;
-	if (this != &copy)
+	if (this != &copy) {
 		AForm::operator=(copy);
+		this->_target = copy._target;
+	}
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
-	std::string fileName = this->getName() + "_shrubbery";
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	std::string fileName = _target + "_shrubbery";
 	std::ofstream outputFile;
 
-	if (executor.getGrade() < this->getGradeToExecute()) {
-		outputFile.open(fileName);
+	if (executor.executeForm(*this) == true) {
+		outputFile.open(fileName.c_str());
 		outputFile << "      /\\      " << std::endl;
 		outputFile << "     /\\*\\     " << std::endl;
 		outputFile << "    /\\O\\*\\    " << std::endl;
@@ -53,8 +55,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 		outputFile << "      ||      " << std::endl;
 		outputFile << std::endl;
 		outputFile.close();
-	} else if (!this->isSigned()) {
-		throw AForm::NotSignedException();	
-	} else
-		throw AForm::GradeTooLowException();
+	}
 }

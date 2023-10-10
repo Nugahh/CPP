@@ -36,14 +36,14 @@ class Bureaucrat {
 
 		class GradeTooHighException : public std::exception {
 			public:	
-				virtual void error() const throw() {
+				void error() const throw() {
 					std::cout << "Grade is too high" << std::endl;
 				}
 		};
 
 		class GradeTooLowException : public std::exception {
 			public:
-				virtual void error() const throw() {
+				void error() const throw() {
 					std::cout << "Grade is too low" << std::endl;
 				}
 		};

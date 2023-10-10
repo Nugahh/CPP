@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 16:16:34 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/06 17:27:44 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/09 15:09:24 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ class ShrubberyCreationForm : public AForm {
 		
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &copy);
 		
-		void execute(Bureaucrat const & executor) const;	
+		void execute(Bureaucrat const & executor) const;
+
+		private:
+			std::string _target;
 };
 
 #endif
