@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:25:44 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/09 18:17:49 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/14 00:09:37 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,24 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	if (executor.getGrade() > this->_gradeToExecute)
+		throw AForm::GradeTooLowException();
+	if (this->_signed == false)
+		throw AForm::NotSignedException();
 	std::string fileName = _target + "_shrubbery";
 	std::ofstream outputFile;
 
-	if (executor.executeForm(*this) == true) {
-		outputFile.open(fileName.c_str());
-		outputFile << "      /\\      " << std::endl;
-		outputFile << "     /\\*\\     " << std::endl;
-		outputFile << "    /\\O\\*\\    " << std::endl;
-		outputFile << "   /*/\\/\\/\\   " << std::endl;
-		outputFile << "  /\\O\\/\\*\\/\\  " << std::endl;
-		outputFile << " /\\*\\/\\*\\/\\/\\ " << std::endl;
-		outputFile << "/\\O\\/\\/*/\\/O/\\" << std::endl;
-		outputFile << "      ||      " << std::endl;
-		outputFile << "      ||      " << std::endl;
-		outputFile << "      ||      " << std::endl;
-		outputFile << std::endl;
-		outputFile.close();
-	}
+	outputFile.open(fileName.c_str());
+	outputFile << "      /\\      " << std::endl;
+	outputFile << "     /\\*\\     " << std::endl;
+	outputFile << "    /\\O\\*\\    " << std::endl;
+	outputFile << "   /*/\\/\\/\\   " << std::endl;
+	outputFile << "  /\\O\\/\\*\\/\\  " << std::endl;
+	outputFile << " /\\*\\/\\*\\/\\/\\ " << std::endl;
+	outputFile << "/\\O\\/\\/*/\\/O/\\" << std::endl;
+	outputFile << "      ||      " << std::endl;
+	outputFile << "      ||      " << std::endl;
+	outputFile << "      ||      " << std::endl;
+	outputFile << std::endl;
+	outputFile.close();
 }

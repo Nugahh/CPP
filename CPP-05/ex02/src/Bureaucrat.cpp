@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:54:15 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/13 02:12:02 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/14 00:09:47 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ Bureaucrat::Bureaucrat(const Bureaucrat& copy) : _name(copy._name), _grade(copy.
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
-	std::cout << "Bureaucrat Constructor called" << std::endl;
 	if (this->_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (this->_grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+	std::cout << "Bureaucrat Constructor called" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
@@ -62,32 +62,27 @@ void Bureaucrat::decrementGrade() {
 }
 
 void Bureaucrat::signForm(AForm &form) {
-	if (form.getGradeToSign() < this->_grade)
-		throw AForm::GradeTooLowException();
-	else
-	{
-		std::cout << "signed2 = " << this->_signed << std::endl;	
-		this->_signed = true;
-		std::cout << "signed2 = " << this->_signed << std::endl;
+	try {
+		form.beSigned(*this);
+		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	} catch (std::exception &e) {
+		std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
-void	Bureaucrat::executeForm(AForm const & form) const {
+void	Bureaucrat::executeForm(AForm const &form) const {
 	try {
 		form.execute(*this);
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
 	} catch (std::exception &e) {
 		std::cout << this->_name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-	return ("Grade is too high");
+	return ("grade is too high");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return ("Grade is too low");
-}
-
-const char *Bureaucrat::NotSignedException::what() const throw() {
-	return ("Form is not signed");
+	return ("grade is too low");
 }

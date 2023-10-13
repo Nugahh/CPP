@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:25:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/13 01:44:47 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/14 00:09:08 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &c
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
+	if (executor.getGrade() > this->_gradeToExecute)
+		throw AForm::GradeTooLowException();
 	if (this->_signed == false)
 		throw AForm::NotSignedException();
-	else if (executor.getGrade() > this->_gradeToExecute)
-		throw Bureaucrat::GradeTooLowException();
-
 	// Seed the random number generator with the current time
-    std::srand(static_cast<unsigned int>(std::time(0)));
+	std::srand(static_cast<unsigned int>(std::time(0)));
 
 	// Generate a random integer between 0 and RAND_MAX
 	int random_number = std::rand();

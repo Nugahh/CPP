@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:46:08 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/13 01:23:35 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/13 23:42:02 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 
 #include "Bureaucrat.hpp"
 
-
 class Bureaucrat;
-
 class AForm {
 	
 	public:
 		AForm();
 		AForm(const AForm& copy);
-		AForm(std::string name, int gradeToExecute, int gradeToSign);
+		AForm(std::string name, int gradeToSign, int gradeToExecute);
 		virtual ~AForm();
 
 		AForm& operator=(const AForm &copy);
@@ -32,19 +30,23 @@ class AForm {
 		int				getGradeToExecute() const;
 		int				getGradeToSign() const;
 		bool			isSigned() const;
+		void			beSigned(Bureaucrat &bureaucrat);
 
 		virtual void	execute(Bureaucrat const & executor) const = 0;
 
 		class GradeTooHighException : public std::exception {
-			const char *what() const throw();
+			public: 
+				virtual const char *what() const throw();
 		};
 		
 		class GradeTooLowException : public std::exception {
-			const char *what() const throw();
+			public: 
+				virtual const char *what() const throw();
 		};
 
 		class NotSignedException : public std::exception {
-			const char *what() const throw();
+			public: 
+				virtual const char *what() const throw();
 		};
 
 	protected:
