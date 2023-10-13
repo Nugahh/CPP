@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Character.hpp"
+#include "../includes/character.hpp"
 
 Character::Character()
 	: _name("character")
 	, _trash(NULL)
+	, _trashSize(0)
 	, _inventorySize(0) {
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
@@ -24,6 +25,7 @@ Character::Character()
 Character::Character(std::string const &name)
 	: _name(name)
 	, _trash(NULL)
+	, _trashSize(0)
 	, _inventorySize(0) {
 	for (int i = 0; i < 4; i++) {
 		this->_inventory[i] = NULL;
@@ -31,34 +33,30 @@ Character::Character(std::string const &name)
 }
 
 Character::Character(Character const &copy) {
-	// *this = copy;
-	this->_inventorySize = 0;
-	for (int i = 0; i < 4; i++)
-		this->_inventory[i] = NULL;
-	for (int i = 0; i < 4; i++)
-		if (copy._inventory[i])
-			this->equip(copy._inventory[i]->clone());
-	this->_name = copy._name;
-	this->_inventorySize = copy._inventorySize;
-	this->_trash = copy._trash;
+	*this = copy;
 }
 
 Character::~Character() {
 	for (int i = 0; i < 4; i++)
 		if (this->_inventory[i]) 
 			delete this->_inventory[i];
+	if (this->_trash) {
+		for (int i = 0; this->_trash[i]; i++)
+			delete this->_trash[i];
+		delete[] this->_trash;
+	}
 }
 
 Character &Character::operator=(Character const &rhs) {
 	for (int i = 0; i < 4; i++) {
+		if (this->_inventory[i] != NULL) {
 			delete this->_inventory[i];
-			this->_inventory[i] = NULL;
-			if (rhs._inventory[i])
-				this->equip(rhs._inventory[i]->clone());
+		}
+		this->_inventory[i] = rhs._inventory[i]->clone();
 	}
 	this->_name = rhs._name;
+	this->_trashSize = rhs._trashSize;
 	this->_inventorySize = rhs._inventorySize;
-	this->_trash = rhs._trash;
 	return (*this);
 }
 
@@ -80,7 +78,8 @@ void Character::unequip(int idx) {
 		return ;
 	if (this->_inventory[idx] == NULL)
 		return ;
-	this->_trash = this->_inventory[idx];
+	this->_trash[this->_trashSize] = this->_inventory[idx];
+	this->_trashSize++;
 	this->_inventory[idx] = NULL;
 }
 
@@ -90,13 +89,4 @@ void	Character::use(int idx, ICharacter &target) {
 	if (this->_inventory[idx] == NULL)
 		return ;
 	this->_inventory[idx]->use(target);
-}
-
-void	Character::deleteTrash()
-{
-	if (this->_trash)
-	{
-		delete this->_trash;
-		this->_trash = NULL;
-	}
 }

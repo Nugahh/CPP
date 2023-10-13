@@ -13,7 +13,7 @@
 #ifndef WRONGCAT_HPP
 #define WRONGCAT_HPP
 
-#include "WrongAnimal.hpp"
+#include "wrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal {
 	

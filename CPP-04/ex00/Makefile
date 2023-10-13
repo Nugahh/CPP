@@ -6,7 +6,7 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/07/28 19:10:02 by fwong            ###   ########.fr        #
+#    Updated: 2023/07/12 17:40:00 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	polymorphism
 
 CC		=	c++
 
-CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -I includes/ -g3 -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -std=c++98
 
 SRCS	= 	animal.cpp dog.cpp cat.cpp wrongAnimal.cpp wrongCat.cpp main.cpp
  

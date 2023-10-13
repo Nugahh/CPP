@@ -17,10 +17,10 @@
 #include <string>
 
 #include "ICharacter.hpp"
-class ICharacter;
 #include "AMateria.hpp"
-class AMateria;
 
+class ICharacter;
+class AMateria;
 
 class Character : public ICharacter {
 
@@ -33,15 +33,15 @@ class Character : public ICharacter {
 		Character &operator=(Character const &copy);
 		std::string const &getName() const;
 
-		virtual void equip(AMateria *m);
-		virtual void unequip(int idx);
-		virtual void use(int idx, ICharacter &target);
-		void 		 deleteTrash();
+		void equip(AMateria *m);
+		void unequip(int idx);
+		void use(int idx, ICharacter &target);
 
 		private:
 			std::string _name;
 			AMateria	*_inventory[4];
-			AMateria 	*_trash;
+			AMateria 	**_trash;
+			int			_trashSize;
 			int			_inventorySize;
 };
 

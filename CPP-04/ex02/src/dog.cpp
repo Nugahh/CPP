@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Dog.hpp"
+#include "../includes/dog.hpp"
 
 Dog::Dog()
 	: AAnimal() {
@@ -32,19 +32,9 @@ Dog::~Dog() {
 
 Dog &Dog::operator=(Dog const &rhs) {
 	this->_type = rhs._type;
-	this->_brain = new Brain;
-	*this->_brain = *rhs._brain;
 	return (*this);
 }
 
 void Dog::makeSound() const {
 	std::cout << "Woof Woof" << std::endl;
-}
-
-std::string Dog::getIdea(int i) const {
-	return this->_brain->getIdea(i);
-}
-
-std::string Dog::setIdea(std::string idea, int i) {
-	return this->_brain->setIdea(idea, i);
 }
