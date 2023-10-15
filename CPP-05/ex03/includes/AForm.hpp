@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:46:08 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/15 17:49:27 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/15 20:03:47 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Bureaucrat;
 class AForm {
-	
+
 	public:
 		AForm();
 		AForm(const AForm& copy);
