@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 01:42:15 by fwong             #+#    #+#             */
-/*   Updated: 2023/10/15 20:15:14 by fwong            ###   ########.fr       */
+/*   Updated: 2023/10/15 20:26:24 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,11 @@ int main() {
 	Bureaucrat pleb("Pleb", 150);
 
 	Intern intern;
-	
-	// ShrubberyCreationForm shrubbery("Shrubbery");
-	// RobotomyRequestForm robotomy("Robotomy");
-	// PresidentialPardonForm presidential("Presidential");
 
 	AForm* shrubbery = intern.makeForm("ShrubberyCreationForm", "Shrubbery");
 	AForm* robotomy = intern.makeForm("RobotomyRequestForm", "Robotomy");
 	AForm* presidential = intern.makeForm("PresidentialPardonForm", "Presidential");
+	AForm* wrong = intern.makeForm("Wrong", "Wrong");
 	
 	std::cout << std::endl;
 	std::cout << BGRN << "Bureaucrat can sign and execute forms" << RESET << std::endl;
@@ -84,10 +81,11 @@ int main() {
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	delete shrubbery;
-	delete robotomy;
-	delete presidential;
 	std::cout << std::endl;
 	std::cout << "----------------------------------------" << std::endl;
 	std::cout << std::endl;
+	delete shrubbery;
+	delete robotomy;
+	delete presidential;
+	delete wrong;
 }
