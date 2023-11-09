@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include <algorithm>
+#include <cctype>
 
 
 class ScalarConverter {
@@ -26,6 +29,12 @@ class ScalarConverter {
 		ScalarConverter &operator=(const ScalarConverter &rhs);
 
 		void	convert(std::string str);
+		bool	checkInput(std::string str);
+		void	castToChar(double literal);
+		void	castToInt(double literal);
+		void	castToFloat(double literal);
+		void	castToDouble(double literal);
+	
 };
 
 #endif
