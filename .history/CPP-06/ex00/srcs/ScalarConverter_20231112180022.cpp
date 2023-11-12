@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 18:04:41 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 18:00:22 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	ScalarConverter::convert(std::string str) {
 		return ;
 	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::atof(str.c_str());
+	double literal = std::stod(str);
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')

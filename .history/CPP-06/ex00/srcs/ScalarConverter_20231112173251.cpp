@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 18:04:41 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 17:32:51 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ScalarConverter::ScalarConverter(const ScalarConverter& copy) { *this = copy; }
 
 ScalarConverter::~ScalarConverter() {}
 
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
+ScalarConverter ScalarConverter::operator=(const ScalarConverter& rhs) {
 	if (this != &rhs) {
 		*this = rhs;
   	}
@@ -33,7 +33,7 @@ bool	ScalarConverter::checkInput(std::string str) {
 	
     if (result == end) // If result is not the end, we found a match
 		return (false);
-	size_t	i = 0;
+	int i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	int count = 0;
@@ -43,67 +43,32 @@ bool	ScalarConverter::checkInput(std::string str) {
 		if (count > 1)
 			return (false);
 	}
-	if (str[i] == 'f' && i != str.length() - 1)
-		return (false);
-	return (true);
-}
-
-bool	isOnlyDigits(std::string str) {
-	size_t	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	for (; i < str.length(); i++) {
-		if (!isdigit(str[i]))
-			return (false);
-	}
-	return (true);
+	if (str[i] == 'f' && i == str.length() - 1)
+		return (true);
+	return (false);
 }
 
 void	ScalarConverter::castToChar(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_CHAR || literal > MAX_CHAR) || std::isnan(literal))
-		std::cout << "char: impossible" << std::endl;
-	else if (literal < MIN_DISPLAYABLE || literal > MAX_DISPLAYABLE)
-		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "char: ";
+	if (literal < 0 || literal > 127 || std::isnan(literal))
+		std::cout << "impossible" << std::endl;
+	else if (literal < 32 || literal > 126)
+		std::cout << "Non displayable" << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(literal) << "'" << std::endl;
-}
-
-void	ScalarConverter::castToInt(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_INT || literal > MAX_INT) || std::isnan(literal))
-		std::cout << "int: impossible" << std::endl;
-	else
-		std::cout << "int: " << static_cast<int>(literal) << std::endl;
-}
-
-void	ScalarConverter::castToFloat(double literal) {
-	if (!std::isfinite(literal) || std::isnan(literal))
-		std::cout << "float: " << literal << "f" << std::endl;
-	else
-		std::cout << "float: " << static_cast<float>(literal) << "f" << std::endl;
-}
-
-void	ScalarConverter::castToDouble(double literal) {
-	if (!std::isfinite(literal) || std::isnan(literal))
-		std::cout << "double: " << literal << std::endl;
-	else
-		std::cout << "double: " << static_cast<double>(literal) << std::endl;
+		std::cout << "'" << static_cast<char>(literal) << "'" << std::endl;
 }
 
 void	ScalarConverter::convert(std::string str) {
-	if (checkInput(str) == false) {
-		std::cout << "Error: Invalid input" << std::endl;
-		return ;
-	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::atof(str.c_str());
+	double literal = std::stod(str);
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
-		castToChar(literal);
-	else if (isOnlyDigits(str))
-		castToInt(literal);
-	else if (str[str.length() - 1] == 'f')
-		castToFloat(literal);
+		castToChar(str[1]);
+	else if (str == "-inff" || str == "+inff" || str == "nanf")
+		castToFloat(str);
+	else if (str == "-inf" || str == "+inf" || str == "nan")
+		castToDouble(str);
 	else
-		castToDouble(literal);
+		castToDouble(str);
 }

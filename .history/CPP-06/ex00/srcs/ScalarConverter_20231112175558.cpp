@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 18:04:41 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 17:55:58 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,21 @@ bool	isOnlyDigits(std::string str) {
 }
 
 void	ScalarConverter::castToChar(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_CHAR || literal > MAX_CHAR) || std::isnan(literal))
-		std::cout << "char: impossible" << std::endl;
+	std::cout << "char: ";
+	if (literal < MIN_CHAR || literal > MAX_CHAR || std::isnan(literal))
+		std::cout << "impossible" << std::endl;
 	else if (literal < MIN_DISPLAYABLE || literal > MAX_DISPLAYABLE)
 		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(literal) << "'" << std::endl;
+		std::cout << "'" << static_cast<char>(literal) << "'" << std::endl;
 }
 
 void	ScalarConverter::castToInt(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_INT || literal > MAX_INT) || std::isnan(literal))
-		std::cout << "int: impossible" << std::endl;
+	std::cout << "int: ";
+	if (!std::isfinite(literal) || literal < MIN_INT || literal > MAX_INT || std::isnan(literal))
+		std::cout << "impossible" << std::endl;
 	else
-		std::cout << "int: " << static_cast<int>(literal) << std::endl;
-}
-
-void	ScalarConverter::castToFloat(double literal) {
-	if (!std::isfinite(literal) || std::isnan(literal))
-		std::cout << "float: " << literal << "f" << std::endl;
-	else
-		std::cout << "float: " << static_cast<float>(literal) << "f" << std::endl;
-}
-
-void	ScalarConverter::castToDouble(double literal) {
-	if (!std::isfinite(literal) || std::isnan(literal))
-		std::cout << "double: " << literal << std::endl;
-	else
-		std::cout << "double: " << static_cast<double>(literal) << std::endl;
+		std::cout << static_cast<int>(literal) << std::endl;
 }
 
 void	ScalarConverter::convert(std::string str) {
@@ -95,15 +83,15 @@ void	ScalarConverter::convert(std::string str) {
 		return ;
 	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::atof(str.c_str());
+	double literal = std::stod(str);
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
-		castToChar(literal);
+		castToChar(str[1]);
 	else if (isOnlyDigits(str))
-		castToInt(literal);
+		castToInt(str);
 	else if (str[str.length() - 1] == 'f')
-		castToFloat(literal);
+		castToFloat(str);
 	else
-		castToDouble(literal);
+		castToDouble(str);
 }

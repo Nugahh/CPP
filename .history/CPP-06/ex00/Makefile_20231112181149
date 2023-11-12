@@ -6,7 +6,7 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/11/12 18:11:54 by fwong            ###   ########.fr        #
+#    Updated: 2023/11/12 18:11:49 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ all: ${NAME}
 
 -include $(DEP)
 
-./objs/%.o: srcs/%.cpp
+./objs/%.o: src/%.cpp
 	@@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -o $@ -c $<
 

@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 18:04:41 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 18:00:12 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	isOnlyDigits(std::string str) {
 }
 
 void	ScalarConverter::castToChar(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_CHAR || literal > MAX_CHAR) || std::isnan(literal))
+	if (!std::isfinite(literal) || *literal < MIN_CHAR || literal > MAX_CHAR || std::isnan(literal))
 		std::cout << "char: impossible" << std::endl;
 	else if (literal < MIN_DISPLAYABLE || literal > MAX_DISPLAYABLE)
 		std::cout << "char: Non displayable" << std::endl;
@@ -69,7 +69,7 @@ void	ScalarConverter::castToChar(double literal) {
 }
 
 void	ScalarConverter::castToInt(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_INT || literal > MAX_INT) || std::isnan(literal))
+	if (!std::isfinite(literal) || literal < MIN_INT || literal > MAX_INT || std::isnan(literal))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(literal) << std::endl;
@@ -95,7 +95,7 @@ void	ScalarConverter::convert(std::string str) {
 		return ;
 	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::atof(str.c_str());
+	double literal = std::stod(str);
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')

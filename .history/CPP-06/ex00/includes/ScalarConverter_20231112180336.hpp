@@ -20,7 +20,7 @@
 #include <cctype>
 #include <cmath>
 #include <limits>
-#include <cstdlib>
+#include <cstdlib
 
 #define MIN_CHAR 0
 #define MAX_CHAR 127

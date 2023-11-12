@@ -18,16 +18,6 @@
 #include <iomanip>
 #include <algorithm>
 #include <cctype>
-#include <cmath>
-#include <limits>
-#include <cstdlib>
-
-#define MIN_CHAR 0
-#define MAX_CHAR 127
-#define MIN_INT -2147483648
-#define MAX_INT 2147483647
-#define MIN_DISPLAYABLE 32
-#define MAX_DISPLAYABLE 126
 
 class ScalarConverter {
 	public:
@@ -38,7 +28,6 @@ class ScalarConverter {
 		ScalarConverter &operator=(const ScalarConverter &rhs);
 
 		bool	checkInput(std::string str);
-		bool	isOnlyDigits(std::string str);
 		void	castToChar(double literal);
 		void	castToInt(double literal);
 		void	castToFloat(double literal);
