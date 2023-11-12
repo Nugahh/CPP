@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 21:57:15 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 18:49:15 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,22 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
 bool	ScalarConverter::checkInput(std::string str) {
 	
 	const std::string exceptions[8] = {"nan", "nanf", "-inf", "+inf", "-inff", "+inff", "inf", "inff"};
+    const std::string* end = exceptions + 8; // Pointer to the end of the array
+    const std::string* result = std::find(exceptions, end, str);
 	
-    for (size_t i = 0; i < 8; i++) {
-		if (exceptions[i] == str)
-			return (true);
-	}
+    if (result != end) // If result is not the end, we found a match
+		return (std::cout << "test \n", false);
 	size_t	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	int count = 0;
-	if (!isdigit(str[i]) && str.length() != 1)
-		return (false);
 	for (; i < str.length() && (isdigit(str[i]) || str[i] == '.' ); i++) {
 		if (!isdigit(str[i]) && str[i] == '.')
 			count++;
 		if (count > 1)
 			return (false);
 	}
-	if (i != 0 && str[i] == 'f' && i != str.length() - 1)
+	if (str[i] == 'f' && i != str.length() - 1)
 		return (false);
 	return (true);
 }
@@ -97,8 +95,7 @@ void	ScalarConverter::convert(std::string str) {
 		return ;
 	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::strtod(str.c_str(), NULL);
-	std::cout << "literal : " << literal << std::endl;
+	double literal = std::atof(str.c_str());
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')

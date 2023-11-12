@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 21:57:15 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 19:03:46 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ bool	ScalarConverter::isOnlyDigits(std::string str) {
 }
 
 void	ScalarConverter::castToChar(double literal) {
-	if (!std::isfinite(literal) || (literal < MIN_CHAR || literal > MAX_CHAR) || std::isnan(literal))
-		std::cout << "char: impossible" << std::endl;
-	else if (literal < MIN_DISPLAYABLE || literal > MAX_DISPLAYABLE)
-		std::cout << "char: Non displayable" << std::endl;
+	int literalInt = static_cast<int>(literal);
+	if (!std::isfinite(literalInt) || (literalInt < MIN_CHAR || literalInt > MAX_CHAR) || std::isnan(literalInt))
+		std::cout << "char: impossible" << literalInt <<  std::endl;
+	else if (literalInt < MIN_DISPLAYABLE || liteliteralIntral > MAX_DISPLAYABLE)
+		std::cout << "char: Non displayable" << literalInt << std::endl;
 	else
-		std::cout << "char: '" << static_cast<char>(literal) << "'" << std::endl;
+		std::cout << "char: '" << static_cast<char>(literalInt) << "'" << std::endl;
 }
 
 void	ScalarConverter::castToInt(double literal) {
@@ -97,8 +98,7 @@ void	ScalarConverter::convert(std::string str) {
 		return ;
 	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::strtod(str.c_str(), NULL);
-	std::cout << "literal : " << literal << std::endl;
+	double literal = std::atof(str.c_str());
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')

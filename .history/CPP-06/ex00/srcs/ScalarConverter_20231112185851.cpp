@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/12 21:57:15 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/12 18:58:51 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,11 @@ bool	ScalarConverter::checkInput(std::string str) {
 		if (exceptions[i] == str)
 			return (true);
 	}
+	while (str[0] )
 	size_t	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	int count = 0;
-	if (!isdigit(str[i]) && str.length() != 1)
-		return (false);
 	for (; i < str.length() && (isdigit(str[i]) || str[i] == '.' ); i++) {
 		if (!isdigit(str[i]) && str[i] == '.')
 			count++;
@@ -97,8 +96,7 @@ void	ScalarConverter::convert(std::string str) {
 		return ;
 	}
 	std::cout << std::fixed << std::setprecision(1);
-	double literal = std::strtod(str.c_str(), NULL);
-	std::cout << "literal : " << literal << std::endl;
+	double literal = std::atof(str.c_str());
 	if (str.length() == 1 && !isdigit(str[0]))
 		castToChar(literal);
 	else if (str.length() == 3 && str[0] == '\'' && str[2] == '\'')
