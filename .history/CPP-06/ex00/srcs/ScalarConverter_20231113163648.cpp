@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/13 16:42:03 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:36:48 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,21 @@ void	ScalarConverter::printChar(char c) {
 void	ScalarConverter::castToChar(double literal) {
 	if (!std::isfinite(literal) || (literal < MIN_CHAR || literal > MAX_CHAR) || std::isnan(literal))
 		std::cout << "char: impossible" << std::endl;
-	else if (!std::isprint(literal))
+	else if (literal < MIN_DISPLAYABLE || literal > MAX_DISPLAYABLE)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(literal) << "'" << std::endl;
+	std::cout << "int: "<< static_cast<int>(literal) << std::endl;
+	std::cout << "float: "<< static_cast<float>(literal) << "f" << std::endl;
+	std::cout << "double: "<< static_cast<double>(literal) << std::endl;
 }
 
 void	ScalarConverter::castToInt(double literal) {
-	castToChar(literal);
+	if (!std::isprint(literal)) {
+		std::cout << "char: Non displayable" << std::endl;
+	}
+	else if ()
+		std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	if (!std::isfinite(literal) || (literal < MIN_INT || literal > MAX_INT) || std::isnan(literal))
 		std::cout << "int: impossible" << std::endl;
 	else
@@ -91,7 +98,7 @@ void	ScalarConverter::castToInt(double literal) {
 }
 
 void	ScalarConverter::castToFloat(double literal) {
-	castToChar(literal);
+	std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	std::cout << "int: "<< static_cast<int>(literal) << std::endl;
 	if (!std::isfinite(literal) || std::isnan(literal))
 		std::cout << "float: " << literal << "f" << std::endl;
@@ -101,7 +108,7 @@ void	ScalarConverter::castToFloat(double literal) {
 }
 
 void	ScalarConverter::castToDouble(double literal) {
-	castToChar(literal);
+	std::cout << "char: " << static_cast<char>(literal) << std::endl;
 	std::cout << "int: "<< static_cast<int>(literal) << std::endl;
 	std::cout << "float: "<< static_cast<float>(literal) << "f" << std::endl;
 	if (!std::isfinite(literal) || std::isnan(literal))

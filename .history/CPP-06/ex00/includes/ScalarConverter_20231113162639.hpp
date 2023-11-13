@@ -39,7 +39,7 @@ class ScalarConverter {
 
 		bool	checkInput(std::string str);
 		bool	isOnlyDigits(std::string str);
-		void	printChar(char c);
+		void	printChar()
 		void	castToChar(double literal);
 		void	castToInt(double literal);
 		void	castToFloat(double literal);
