@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/13 16:44:42 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:44:28 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	ScalarConverter::castToChar(double literal) {
 
 void	ScalarConverter::castToInt(double literal) {
 	castToChar(literal);
-	if (!std::isfinite(literal) || (literal < MIN_INT || literal > MAX_INT) || std::isnan(literal))
+	if (std::isfinite(literal) || (literal < MIN_INT || literal > MAX_INT) || std::isnan(literal))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(literal) << std::endl;
