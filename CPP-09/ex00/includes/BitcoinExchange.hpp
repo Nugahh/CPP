@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/22 22:45:07 by fwong            ###   ########.fr       */
+/*   Updated: 2023/11/22 23:17:51 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ class	BitcoinExchange {
 		
 		BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
-		void	calculatePrice(std::string date, float price);
+		void	calculatePrice(std::string date, int quantity);
+		void	addBitcoinValueByDate(std::string date, std::string value);
 		
 	private:
 		std::map<std::string, float>	_bitcoinValueByDate;

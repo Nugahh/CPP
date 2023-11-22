@@ -6,7 +6,7 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/11/22 21:42:51 by fwong            ###   ########.fr        #
+#    Updated: 2023/11/22 23:16:01 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -I includes/ -g3 -std=c++98
  
-SRCS	=	main.cpp
+SRCS	=	BitcoinExchange.cpp
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 
