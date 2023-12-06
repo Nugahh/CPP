@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/06 20:10:45 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/06 20:32:43 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 # include <iostream>
 # include <string>
@@ -28,19 +28,15 @@
 # include <list>
 # include <stack>
 
-class	RPN {
+class	PmergeMe {
 	public:
-		RPN();
-		RPN(const RPN &rhs);
-		~RPN();
+		PmergeMe();
+		PmergeMe(const PmergeMe &rhs);
+		~PmergeMe();
 
-		RPN		&operator=(const RPN &rhs);
-
-		bool		isNumber(const std::string& s);
-		void 		reversePolishNotation(const std::string &input);
+		PmergeMe	&operator=(const PmergeMe &rhs);
 		
-		private:
-			std::stack<float>	_stack;
+
 };
 
 #endif
