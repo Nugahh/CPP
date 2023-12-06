@@ -6,17 +6,17 @@
 #    By: fwong <fwong@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/28 17:30:35 by fwong             #+#    #+#              #
-#    Updated: 2023/12/04 15:29:30 by fwong            ###   ########.fr        #
+#    Updated: 2023/12/06 18:47:24 by fwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	btc
+NAME	=	RPN
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Wextra -Werror -MMD -MP -I includes/ -g3 -std=c++98
  
-SRCS	=	BitcoinExchange.cpp main.cpp
+SRCS	=	RPN.cpp main.cpp
  
 OBJS	:=	${addprefix ./objs/,${SRCS:%.cpp=%.o}}
 

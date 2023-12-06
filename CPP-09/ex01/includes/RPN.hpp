@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/04 17:24:28 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/06 18:34:21 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
-# define BITCOINEXCHANGE_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 # include <iostream>
 # include <string>
@@ -26,22 +26,22 @@
 # include <map>
 # include <fstream>
 # include <list>
+# include <stack>
 
-class	BitcoinExchange {
+class	RPN {
 	public:
-		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange &copy);
-		~BitcoinExchange();
-		
-		BitcoinExchange &operator=(const BitcoinExchange &rhs);
+		RPN();
+		RPN(const RPN &rhs);
+		~RPN();
 
-		bool	isDateValid(const std::string& date);
-		bool	isFloat(const std::string& value);
-		bool	checkInput(const std::string& line);
-		void	parseFile(const std::string& file);
+		RPN		&operator=(const RPN &rhs);
+
+		bool		isNumber(const std::string& s);
+		void		readInput(const std::string &input);
+		void 		reversePolishNotation();
 		
-	private:
-		std::map<std::string, float>	_bitcoinValueByDate;
+		private:
+			std::stack<float>	_stack;
 };
 
 #endif
