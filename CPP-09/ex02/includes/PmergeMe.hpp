@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/06 20:32:43 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/10 17:56:04 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include <fstream>
 # include <list>
 # include <stack>
+# include <deque>
+# include <vector>
 
 class	PmergeMe {
 	public:
@@ -36,7 +38,17 @@ class	PmergeMe {
 
 		PmergeMe	&operator=(const PmergeMe &rhs);
 		
+		template<typename T>
+		T		makePairs(T& container);
+		
 
+	private:
+		std::vector<int>		_vec;
+		std::deque<int>			_deq;
+		size_t					_size;
+		int						_odd;
+		float					_vecTime;
+		float					_deqTime;
 };
 
 #endif
