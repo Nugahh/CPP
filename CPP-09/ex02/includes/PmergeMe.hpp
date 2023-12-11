@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/10 17:56:04 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/11 18:48:24 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <stack>
 # include <deque>
 # include <vector>
+# include <algorithm>
 
 class	PmergeMe {
 	public:
@@ -38,17 +39,21 @@ class	PmergeMe {
 
 		PmergeMe	&operator=(const PmergeMe &rhs);
 		
-		template<typename T>
-		T		makePairs(T& container);
+		void	parseInput(int argc, char **argv);
+		void	makePairsAndSort_v(std::vector<int> vec);
+		void	makePairsAndSort_d(std::deque<int> deq);
 		
 
 	private:
-		std::vector<int>		_vec;
-		std::deque<int>			_deq;
-		size_t					_size;
-		int						_odd;
-		float					_vecTime;
-		float					_deqTime;
+		std::vector<int>						_vec;
+		std::vector<int>						_vecLow;
+		std::vector<std::pair<int, int> >		_vecPairs;
+		std::deque<int>							_deq;
+		std::deque<int>							_deqLow;
+		std::deque<std::pair<int, int> >		_deqPairs;
+		int										_odd;
+		float									_vecTime;
+		float									_deqTime;
 };
 
 #endif
