@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:17 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/11 18:58:02 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/13 18:03:05 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &rhs) {
 // [5] Binary search in order to insert
 
 
-bool compareBySecond(const std::pair<int, int>& a, const std::pair<int, int>& b) {
-    return a.second < b.second;
-}
+// bool compareBySecond(const std::pair<int, int>& a, const std::pair<int, int>& b) {
+//     return a.second < b.second;
+// }
 
 static void printVec(std::vector<std::pair<int, int> > vec) {
 	for (size_t i = 0; i < vec.size(); i++)
@@ -76,27 +76,95 @@ void	PmergeMe::parseInput(int argc, char **argv) {
 	return ;
 }
 
+void	PmergeMe::mergeSort_v(int low, int high) {
+	// check if low is smaller than high, if not the they container is sorted
+	if (low < high) {
+		// get the index of the element which is in the middle
+		int mid = (low + high) / 2;
+		// sort the left side of the container
+		mergeSort_v(low, mid);
+		// sort the right side of the container
+		mergeSort_v(mid + 1, high);
+		// combine them both
+		std::vector<std::pair<int, int> > vecTemp;
+		// for (int i = low; i <= high; i++) {
+		// 	vecTemp[i] = _vecPairs[i];
+		// }
+		int i = low;
+		int j = mid + 1;
+		// copy the smallest values from either the left or the right side back
+		// to the original container
+		std::cout << "2" << std::endl;
+		printVec(_vecPairs);
+		while (i <= mid && j <= high) {
+			if (_vecPairs[i].second <= _vecPairs[j].second) 
+				vecTemp.push_back(_vecPairs[i++]);
+			else
+				vecTemp.push_back(_vecPairs[j++]);
+		}
+		while (i <= mid)
+			vecTemp.push_back(_vecPairs[i++]);
+		while (j <= high)
+			vecTemp.push_back(_vecPairs[j++]);
+		// copy the values from the temporary container back to the original container
+		std::cout << "3" << std::endl;
+		printVec(_vecPairs);
+		for (int i = low; i <= high; i++)
+			_vecPairs[i] = vecTemp[i - low];
+	}
+	return ;	
+}
+
 void	PmergeMe::makePairsAndSort_v(std::vector<int> vec) {
+	bool isOdd = false;
 	if (vec.size() < 2)
 		return ;
-	if (vec.size() % 2 != 0)
+	if (vec.size() % 2 != 0) {
+		isOdd = true;
 		_odd = vec[vec.size() - 1];
-	for (size_t i = 0; i < vec.size(); i += 2) {
-		_vecPairs.push_back(std::make_pair(vec[i], vec[i + 1]));
+		for (size_t i = 0; i < vec.size() - 1; i += 2) {
+			_vecPairs.push_back(std::make_pair(vec[i], vec[i + 1]));
+		}
+	} else {
+		for (size_t i = 0; i < vec.size(); i += 2) {
+			_vecPairs.push_back(std::make_pair(vec[i], vec[i + 1]));
+		}
 	}
 	_vec.clear();
 	// sort pairs
 	for (size_t i = 0; i < _vecPairs.size(); i++)
 		if (_vecPairs[i].first > _vecPairs[i].second)
 			std::swap(_vecPairs[i].first, _vecPairs[i].second);
-	std::sort(_vecPairs.begin(), _vecPairs.end(), compareBySecond);
+	// std::sort(_vecPairs.begin(), _vecPairs.end(), compareBySecond);
+	printVec(_vecPairs);
+	mergeSort_v(0, _vecPairs.size() - 1);
 	printVec(_vecPairs);
 	for (size_t i = 0; i < _vecPairs.size(); i++) {
-		_vec.push_back(_vecPairs[i].first);
-		_vecLow.push_back(_vecPairs[i].second);
+		_vecLow.push_back(_vecPairs[i].first);
+		_vec.push_back(_vecPairs[i].second);
 	}
-	printVecLow(_vec);
-	std::cout << "-------------------------" << std::endl;
+	if (isOdd)
+		_vecLow.push_back(_odd);
 	printVecLow(_vecLow);
+	std::cout << "-------------------------" << std::endl;
+	printVecLow(_vec);
+	// binary search in _vecHigh and insert _vecLow[i] in _vec
+	for (unsigned long i = 0; i < _vecLow.size(); i++) {
+		int low = 0;
+		int high = _vec.size() - 1;
+		int mid = 0;
+		while (low <= high) {
+			mid = (low + high) / 2;
+			if (_vecLow[i] > _vec[mid])
+				low = mid + 1;
+			else if (_vecLow[i] < _vec[mid])
+				high = mid - 1;
+			else
+				break ;
+		}
+		_vec.insert(_vec.begin() + mid, _vecLow[i]);
+	}
+	std::cout << "-------------------------" << std::endl;
+	printVecLow(_vec);
 	return ;
 }

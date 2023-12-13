@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/11 18:48:24 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/13 15:41:56 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class	PmergeMe {
 		void	parseInput(int argc, char **argv);
 		void	makePairsAndSort_v(std::vector<int> vec);
 		void	makePairsAndSort_d(std::deque<int> deq);
+		void	mergeSort_v(int low, int high);
+		void	mergeSort_d(int low, int high);
 		
 
 	private:
