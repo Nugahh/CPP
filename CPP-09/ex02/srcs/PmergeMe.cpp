@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:17 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/13 18:03:05 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/13 18:10:57 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,6 @@ void	PmergeMe::mergeSort_v(int low, int high) {
 		int j = mid + 1;
 		// copy the smallest values from either the left or the right side back
 		// to the original container
-		std::cout << "2" << std::endl;
-		printVec(_vecPairs);
 		while (i <= mid && j <= high) {
 			if (_vecPairs[i].second <= _vecPairs[j].second) 
 				vecTemp.push_back(_vecPairs[i++]);
@@ -107,8 +105,6 @@ void	PmergeMe::mergeSort_v(int low, int high) {
 		while (j <= high)
 			vecTemp.push_back(_vecPairs[j++]);
 		// copy the values from the temporary container back to the original container
-		std::cout << "3" << std::endl;
-		printVec(_vecPairs);
 		for (int i = low; i <= high; i++)
 			_vecPairs[i] = vecTemp[i - low];
 	}
@@ -138,6 +134,7 @@ void	PmergeMe::makePairsAndSort_v(std::vector<int> vec) {
 	// std::sort(_vecPairs.begin(), _vecPairs.end(), compareBySecond);
 	printVec(_vecPairs);
 	mergeSort_v(0, _vecPairs.size() - 1);
+	std::cout << "-------------------------" << std::endl;
 	printVec(_vecPairs);
 	for (size_t i = 0; i < _vecPairs.size(); i++) {
 		_vecLow.push_back(_vecPairs[i].first);
@@ -145,6 +142,7 @@ void	PmergeMe::makePairsAndSort_v(std::vector<int> vec) {
 	}
 	if (isOdd)
 		_vecLow.push_back(_odd);
+	std::cout << "-------------------------" << std::endl;
 	printVecLow(_vecLow);
 	std::cout << "-------------------------" << std::endl;
 	printVecLow(_vec);
@@ -162,7 +160,8 @@ void	PmergeMe::makePairsAndSort_v(std::vector<int> vec) {
 			else
 				break ;
 		}
-		_vec.insert(_vec.begin() + mid, _vecLow[i]);
+		 int insertionIndex = (low > high) ? low : mid;
+		_vec.insert(_vec.begin() + insertionIndex, _vecLow[i]);
 	}
 	std::cout << "-------------------------" << std::endl;
 	printVecLow(_vec);
