@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:17 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/15 04:03:14 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/15 04:01:35 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,10 +163,4 @@ void	PmergeMe::makePairsAndSort_v(std::vector<int> vec) {
 	return ;
 }
 
-void	PmergeMe::printTime_vec() {
-	clock_t start = clock();
-	makePairsAndSort_v(_vec);
-	clock_t end = clock();
-	_vecTime = static_cast<float>(end - start) / CLOCKS_PER_SEC * 1000;
-	std::cout << "Vector time: " << _vecTime << " ms" << std::endl;
-}
+void	PmergeMe::printTime_vec

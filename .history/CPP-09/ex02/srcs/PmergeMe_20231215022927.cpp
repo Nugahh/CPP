@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:17 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/15 04:03:14 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/13 18:10:57 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &rhs) {
 // [4] Put in 2 different containers the highest and lowest elements of each pair
 // If it was odd, the last element is put in the lowest container (or the one not sorted)
 // [5] Binary search in order to insert
+
+
+// bool compareBySecond(const std::pair<int, int>& a, const std::pair<int, int>& b) {
+//     return a.second < b.second;
+// }
 
 static void printVec(std::vector<std::pair<int, int> > vec) {
 	for (size_t i = 0; i < vec.size(); i++)
@@ -161,12 +166,4 @@ void	PmergeMe::makePairsAndSort_v(std::vector<int> vec) {
 	std::cout << "-------------------------" << std::endl;
 	printVecLow(_vec);
 	return ;
-}
-
-void	PmergeMe::printTime_vec() {
-	clock_t start = clock();
-	makePairsAndSort_v(_vec);
-	clock_t end = clock();
-	_vecTime = static_cast<float>(end - start) / CLOCKS_PER_SEC * 1000;
-	std::cout << "Vector time: " << _vecTime << " ms" << std::endl;
 }

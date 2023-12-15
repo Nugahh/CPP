@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/15 04:01:17 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/15 03:59:11 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 # define PMERGEME_HPP
 
 # include <iostream>
-# include <fstream>
 # include <string>
 # include <sstream>
 # include <deque>
 # include <vector>
 # include <ctime>
 # include <algorithm>
+
 
 class	PmergeMe {
 	public:
@@ -35,8 +35,7 @@ class	PmergeMe {
 		void	makePairsAndSort_d(std::deque<int> deq);
 		void	mergeSort_v(int low, int high);
 		void	mergeSort_d(int low, int high);
-		void	printTime_vec();
-		void	printTime_deq();
+		
 
 	private:
 		std::vector<int>						_vec;
