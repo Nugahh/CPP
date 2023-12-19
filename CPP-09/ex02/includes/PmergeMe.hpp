@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 21:48:32 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/15 04:01:17 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/19 03:07:55 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,20 @@ class	PmergeMe {
 
 		PmergeMe	&operator=(const PmergeMe &rhs);
 		
+		std::vector<int>	getVec() const;
+		std::deque<int>		getDeq() const;
+		float				getVecTime() const;
+		float				getDeqTime() const;
 		void	parseInput(int argc, char **argv);
-		void	makePairsAndSort_v(std::vector<int> vec);
-		void	makePairsAndSort_d(std::deque<int> deq);
+		template <typename T>
+		void	printContainer(T container) {
+			for (size_t i = 0; i < container.size(); i++)
+				std::cout << container[i] << " ";
+			std::cout << std::endl;
+			return ;
+		}
+		void	fordJohnson_v(std::vector<int> vec);
+		void	fordJohnson_d(std::deque<int> deq);
 		void	mergeSort_v(int low, int high);
 		void	mergeSort_d(int low, int high);
 		void	printTime_vec();
