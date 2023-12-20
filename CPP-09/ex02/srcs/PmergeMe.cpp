@@ -6,7 +6,7 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:46:17 by fwong             #+#    #+#             */
-/*   Updated: 2023/12/19 03:08:19 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/20 17:02:21 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	PmergeMe::mergeSort_v(int low, int high) {
 		for (int i = low; i <= high; i++)
 			_vecPairs[i] = vecTemp[i - low];
 	}
-	return ;	
+	return ;
 }
 
 void	PmergeMe::fordJohnson_v(std::vector<int> vec) {
