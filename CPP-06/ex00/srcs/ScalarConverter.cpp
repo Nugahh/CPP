@@ -6,26 +6,13 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 16:54:07 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/13 16:44:42 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/21 14:10:17 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter() {}
-
-ScalarConverter::ScalarConverter(const ScalarConverter& copy) { *this = copy; }
-
-ScalarConverter::~ScalarConverter() {}
-
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& rhs) {
-	if (this != &rhs) {
-		*this = rhs;
-  	}
-	return (*this);
-}
-
-bool	ScalarConverter::checkInput(std::string str) {
+bool	ScalarConverter::checkInput(const std::string& str) {
 	
 	const std::string exceptions[8] = {"nan", "nanf", "-inf", "+inf", "-inff", "+inff", "inf", "inff"};
 	
@@ -50,7 +37,7 @@ bool	ScalarConverter::checkInput(std::string str) {
 	return (true);
 }
 
-bool	ScalarConverter::isOnlyDigits(std::string str) {
+bool	ScalarConverter::isOnlyDigits(const std::string& str) {
 	size_t	i = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
@@ -110,7 +97,7 @@ void	ScalarConverter::castToDouble(double literal) {
 		std::cout << "double: " << static_cast<double>(literal) << std::endl;
 }
 
-void	ScalarConverter::convert(std::string str) {
+void	ScalarConverter::convert(const std::string& str) {
 	if (checkInput(str) == false) {
 		std::cout << "Error: Invalid input" << std::endl;
 		return ;

@@ -22,30 +22,32 @@
 #include <limits>
 #include <cstdlib>
 
-#define MIN_CHAR 0
-#define MAX_CHAR 127
-#define MIN_INT -2147483648
-#define MAX_INT 2147483647
-#define MIN_DISPLAYABLE 32
-#define MAX_DISPLAYABLE 126
-
 class ScalarConverter {
 	public:
+		static const int MIN_CHAR = 0;
+		static const int MAX_CHAR = 127;
+		static const int MIN_INT = -2147483648;
+		static const int MAX_INT = 2147483647;
+		static const int MIN_DISPLAYABLE = 32;
+		static const int MAX_DISPLAYABLE = 126;
+
+		// Static member methods
+		static bool checkInput(const std::string& str);
+		static bool isOnlyDigits(const std::string& str);
+		static void printChar(char c);
+		static void castToChar(double literal);
+		static void castToInt(double literal);
+		static void castToFloat(double literal);
+		static void castToDouble(double literal);
+		static void convert(const std::string& str);
+
+	private:
+		// Private constructor and destructor to prevent instantiation
 		ScalarConverter();
-		ScalarConverter(const ScalarConverter &copy);
-		~ScalarConverter();	
-
-		ScalarConverter &operator=(const ScalarConverter &rhs);
-
-		bool	checkInput(std::string str);
-		bool	isOnlyDigits(std::string str);
-		void	printChar(char c);
-		void	castToChar(double literal);
-		void	castToInt(double literal);
-		void	castToFloat(double literal);
-		void	castToDouble(double literal);
-		void	convert(std::string str);
-	
+		~ScalarConverter();
+		// Copy constructor and assignment operator also private if copying is not allowed
+		ScalarConverter(const ScalarConverter& copy);
+		ScalarConverter& operator=(const ScalarConverter& rhs);
 };
 
 #endif

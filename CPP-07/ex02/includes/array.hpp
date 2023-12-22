@@ -6,31 +6,33 @@
 /*   By: fwong <fwong@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:33:36 by fwong             #+#    #+#             */
-/*   Updated: 2023/11/22 17:26:33 by fwong            ###   ########.fr       */
+/*   Updated: 2023/12/22 17:13:48 by fwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include <cctype>
+#include <iostream>
+#include <exception>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-#include <exception>
-#include <cstddef> // For size_t
 
 template <typename T>
 class Array {
 	public:
 		// Default constructor
-		Array() : _elements(nullptr), _numElements(0) {}
+		Array() : _elements(0), _numElements(0) {}
 
 		// Constructor with size
-		Array(std::size_t n) : _elements(new T[n]()), _numElements(n) {}
+		Array(unsigned int n) : _elements(new T[n]()), _numElements(n) {}
 
 		// Copy constructor
 		Array(const Array& other) : _elements(new T[other._numElements]), _numElements(other._numElements) {
-			for (std::size_t i = 0; i < _numElements; ++i) {
+			for (unsigned int i = 0; i < _numElements; ++i) {
 				_elements[i] = other._elements[i];
 			}
 		}
@@ -41,7 +43,7 @@ class Array {
 				delete[] _elements;
 				_elements = new T[other._numElements];
 				_numElements = other._numElements;
-				for (std::size_t i = 0; i < _numElements; ++i) {
+				for (unsigned int i = 0; i < _numElements; ++i) {
 					_elements[i] = other._elements[i];
 				}
 			}
@@ -54,28 +56,28 @@ class Array {
 		}
 
 		// Subscript operator
-		T& operator[](std::size_t index) {
+		T& operator[](unsigned int index) {
 			if (index >= _numElements) {
-				throw std::exception();
+				throw Outofbounds();
 			}
 			return _elements[index];
 		}
-
-		const T& operator[](std::size_t index) const {
-			if (index >= _numElements) {
-				throw std::exception();
-			}
-			return _elements[index];
-		}
+	
+		class Outofbounds : public std::exception {
+			public:
+				const char *what() const throw() {
+					return "Index is out of bounds";
+				}
+		};
 
 		// Size of the array
-		std::size_t size() const noexcept {
+		unsigned int size() const {
 			return _numElements;
 		}
 
 	private:
-		T* _elements;
-		std::size_t _numElements;
+		T* 				_elements;
+		unsigned int 	_numElements;
 };
 
 #endif

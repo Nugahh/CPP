@@ -40,7 +40,6 @@ class Bureaucrat {
 					std::cout << "Grade is too high" << std::endl;
 				}
 		};
-
 		class GradeTooLowException : public std::exception {
 			public:
 				void error() const throw() {
